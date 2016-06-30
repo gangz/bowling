@@ -1,11 +1,13 @@
 
 public class Bowling {
-	int score;
-	int[] frameScore;
-	int[] bonusCount;
-	//int bounsCount = 0;
+	private int score;
+	private int[] frameScore;
+	private int[] bonusCount;
 	private int rollIndex;
 	
+	/**
+	 * 创建一次游戏
+	 */
 	public Bowling(){
 		frameScore = new int[10];
 		bonusCount = new int[10];
@@ -13,6 +15,10 @@ public class Bowling {
 		rollIndex = 0;
 	}
 	
+	/**
+	 * 保龄球投掷一次，pins为玩家击中的瓶子数量
+	 * @param pins
+	 */
 	public void roll(int pins) {
 		addBonus(pins);
 		if (allFramesCompleted()) return;
@@ -21,6 +27,14 @@ public class Bowling {
 		if (isStrike())	setStrikeBounsCount();
 		else if (isSpare())	setSpareBounsCount();
 		rollIndex++;
+	}
+	
+	/**
+	 * 获取当前游戏分数
+	 * @return 当前游戏分数
+	 */
+	public int getScore() {
+		return score;
 	}
 
 	private void setSpareBounsCount() {
@@ -64,9 +78,7 @@ public class Bowling {
 			}
 	}
 
-	public int getScore() {
-		return score;
-	}
+
 
 }
 
